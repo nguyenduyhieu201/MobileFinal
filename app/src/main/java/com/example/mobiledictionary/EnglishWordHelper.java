@@ -35,27 +35,40 @@ public class EnglishWordHelper extends SQLiteOpenHelper {
         QueryData("Update '" + tableName + "' SET 'Highlight' = 0 where Id = '"
                 + id + "'");
     }
+
     public int getHighlightWord (int id, String tableName) {
-        Cursor HighlightWord = GetData("Select * from " + tableName + " where Id = " + id);
-        HighlightWord.moveToNext();
-        int highlightValue = HighlightWord.getInt(3);
-        return highlightValue;
+        if (id == 0) return 0;
+        else {
+            Cursor HighlightWord = GetData("Select * from " + tableName + " where Id = " + id);
+            HighlightWord.moveToNext();
+            int highlightValue = HighlightWord.getInt(3);
+            return highlightValue;
+        }
     }
 
+
+
     public void NoteWord (String note, int id, String tableName) {
-        QueryData("Update '" + tableName + "' SET Note = " + note + " where Id = '"
-                + id + "'");
+        if (id > 0) {
+            QueryData("Update '" + tableName + "' SET Note = '" + note + " ' where Id = "
+                    + id);
+        }
     }
 
     public String getNoteWord (int id, String tableName) {
-        Cursor Note = GetData("Select * from " + tableName + " where Id = " + id);
-        Note.moveToNext();
-        String noteValue = Note.getString(4);
-        if (noteValue == null) {
-            return "";
+        if (id == 0) return "";
+        else {
+            Cursor Note = GetData("Select * from " + tableName + " where Id = " + id);
+            Note.moveToNext();
+            String noteValue = Note.getString(4);
+            if (noteValue == null) {
+                return "";
+            }
+            return noteValue;
         }
-        return noteValue;
     }
+
+
 
     public void CreateData (String tableName) {
         QueryData("CREATE TABLE IF NOT " +

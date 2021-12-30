@@ -78,8 +78,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="20dp"
+        android:textSize="30dp"
         android:padding="10dp"
-        android:textAlignment="center" />
+        android:gravity="left"
+        android:textAlignment= "gravity"/>
 
 </LinearLayout>
 

@@ -43,7 +43,7 @@
                 android:id="@+id/button_add_note"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_yellow_corner_10"
+                android:background="@drawable/bg_gray_corner_10"
                 android:layout_weight="1"
                 android:textSize="14sp"
                 android:text="Add"
@@ -58,7 +58,7 @@
                 android:layout_weight="1"
                 android:textSize="14sp"
                 android:background="@drawable/bg_gray_corner_10"
-                android:text="Cancer"
+                android:text="Cancel"
                 />
         </LinearLayout>
     </LinearLayout>

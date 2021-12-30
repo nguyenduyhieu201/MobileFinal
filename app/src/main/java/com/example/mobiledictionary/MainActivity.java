@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mButtonOpen_Dialog_Note = findViewById(R.id.button_open_dialog_note);
 //        englishWordHelper.CreateData("NoiDung");
-//       englishWordHelper.InsertData("NoiDung","hi","xin chao");
+//        englishWordHelper.InsertData("NoiDung","hi","xin chao");
 //        englishWordHelper.InsertData("NoiDung","hello","xin chao 2");
 //        englishWordHelper.InsertData("NoiDung","cat","meo");
 //        englishWordHelper.InsertData("NoiDung","dog","cho");
@@ -99,45 +99,9 @@ public class MainActivity extends AppCompatActivity {
         mButtonOpen_Dialog_Note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                open_Dialog_Note(Gravity.CENTER);
+                open_Dialog_Note(idWord, Gravity.CENTER);
             }
         });
-
-       /* search.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (search.getText().toString() == ""){
-                    lineShowMeanWord.setVisibility(View.GONE);
-                }
-                return false;
-            }
-        });
-
-        search.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    // Perform action on key press
-                    boolean checked = ((ToggleButton) v).isChecked();
-                    //checked = true thi highlight = 1
-                    if (checked){
-                        englishWordHelper.HighlightWord(idWord,"NoiDung");
-                        mButtonHighlight.setButtonDrawable(R.drawable.icon_star);
-                        // Your code
-                    }
-                    //checked = false thi highlight = 0
-                    else{
-                        englishWordHelper.UnHighlightWord(idWord,"NoiDung");
-                        mButtonHighlight.setButtonDrawable(R.drawable.icon_star_48);
-                        // Your code
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });*/
     }
 
     private int search(EnglishWordHelper englishWordHelper, String tableName) {
@@ -169,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         return idWord;
     }
 
-    private void open_Dialog_Note (int gravity){
+    private void open_Dialog_Note (int idWOrd, int gravity){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.layout_dialog_note);
@@ -208,9 +172,9 @@ public class MainActivity extends AppCompatActivity {
         button_add_note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String note = edittext_note.getText().toString().trim();
-                //englishWordHelper.NoteWord(note, idWord, "NoiDung");
-                dialog.dismiss();
+                String note = edittext_note.getText().toString().trim();
+                englishWordHelper.NoteWord(note, idWord, "NoiDung");
+//                dialog.dismiss();
             }
         });
         dialog.show();
